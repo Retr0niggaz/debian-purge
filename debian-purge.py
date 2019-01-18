@@ -3,9 +3,8 @@ import os, time
 def debian():
     print('\033[93mRUN AS ROOT\033[0m')
     print('first time to setup sudo (run as root)')
-    name = raw_input('give the name of the user you want to add to the sudo group: ')
+    name = raw_input('give the name of the user you want to add to the sudo group (type anything if none): ')
     os.system('adduser %s sudo' %name)
-    reboot = raw_input('reboot or continue r/c: ')
     print('adding now repositories with more software')
     os.system('rm /etc/apt/sources.list && echo "deb http://deb.debian.org/debian stretch main contrib non-free\ndeb-src http://deb.debian.org/debian stretch main contrib non-free\n\ndeb http://deb.debian.org/debian-security/ stretch/updates main contrib non-free\ndeb-src http://deb.debian.org/debian-security/ stretch/updates main contrib non-free\n\ndeb http://deb.debian.org/debian stretch-updates main contrib non-free\ndeb-src http://deb.debian.org/debian stretch-updates main contrib non-free" > /etc/apt/sources.list && dpkg --add-architecture i386')
     print('time to (probably) quick update')
